@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Khóa học: Xây dựng ứng dụng Web (với Gemini AI)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Readex+Pro:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-slate-900 text-slate-300">
+
+    <div class="flex min-h-screen">
+        <nav id="sidebar" class="bg-slate-800 w-64 p-4 space-y-2 fixed top-0 left-0 h-full shadow-lg transform -translate-x-full md:translate-x-0 transition-transform duration-300 ease-in-out z-30">
+            <h1 class="text-2xl font-bold text-cyan-400 border-b border-slate-700 pb-4">Xây Dựng Web</h1>
+            <ul class="space-y-1 pt-2">
+                <li><a href="#overview" data-target="overview" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Tổng quan</a></li>
+                <li><a href="#lesson-1" data-target="lesson-1" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Ch.1: Nền tảng Web</a></li>
+                <li><a href="#lesson-2" data-target="lesson-2" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Ch.2-4: Thao tác CSDL</a></li>
+                <li><a href="#lesson-3" data-target="lesson-3" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Ch.5-8: CRUD</a></li>
+                <li><a href="#lesson-4" data-target="lesson-4" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Ch.9: Mô hình MVC</a></li>
+                <li><a href="#lesson-5" data-target="lesson-5" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200">Dự án: Giỏ hàng</a></li>
+                <div class="border-t border-slate-700 my-2"></div>
+                <li><a href="#ai-assistant" data-target="ai-assistant" class="nav-item block w-full text-left px-4 py-2 rounded-md hover:bg-slate-700 transition-colors duration-200 flex items-center gap-2">✨ Trợ lý AI</a></li>
+            </ul>
+        </nav>
+
+        <header class="md:hidden fixed top-0 left-0 right-0 bg-slate-800/80 backdrop-blur-sm shadow-md p-4 z-20 flex justify-between items-center">
+             <h1 class="text-xl font-bold text-cyan-400">Xây Dựng Web</h1>
+            <button id="menu-toggle" class="text-slate-300 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+        </header>
+
+        <main class="flex-1 md:ml-64 p-4 sm:p-6 pt-20 md:pt-6">
+            <div id="content-container">
+                <section id="overview" class="content-section">
+                    <div class="bg-slate-800 p-6 sm:p-8 rounded-xl shadow-2xl shadow-cyan-500/10">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-4">Giáo trình: Xây dựng ứng dụng Web</h2>
+                        <p class="text-slate-400 mb-6 max-w-3xl">Chào mừng bạn đến với phiên bản tương tác của giáo trình Xây dựng ứng dụng Web. Nền tảng này được thiết kế để biến những kiến thức trong sách thành một trải nghiệm học tập sống động và hiệu quả. Bạn sẽ được khám phá từ kiến trúc web cơ bản, làm việc với PHP & MySQL, cho đến việc xây dựng ứng dụng hoàn chỉnh theo mô hình MVC.</p>
+                        
+                        <div class="grid md:grid-cols-2 gap-8 items-center">
+                            <div class="mb-8 md:mb-0">
+                                <h3 class="text-2xl font-semibold text-slate-200 mb-4">Cấu trúc khóa học</h3>
+                                <p class="text-slate-400 mb-6">Khóa học được chia thành các module chính, mỗi module tập trung vào một nhóm kỹ năng cốt lõi. Biểu đồ bên cạnh thể hiện sự phân bổ của các phần kiến thức, giúp bạn có cái nhìn tổng quan về lộ trình học tập.</p>
+                                <ul class="space-y-2 text-slate-300">
+                                    <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-cyan-400 mr-3"></span>Nền tảng & Cài đặt</li>
+                                    <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-sky-400 mr-3"></span>Thao tác CSDL cơ bản</li>
+                                    <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-indigo-400 mr-3"></span>CRUD Operations</li>
+                                    <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-violet-400 mr-3"></span>Kiến trúc MVC</li>
+                                    <li class="flex items-center"><span class="w-3 h-3 rounded-full bg-fuchsia-400 mr-3"></span>Dự án thực tế</li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <div class="chart-container">
+                                    <canvas id="courseStructureChart"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="lesson-1" class="content-section hidden">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-2">Chương 1: Nền tảng Web & Môi trường PHP</h2>
+                        <p class="text-slate-400 mb-6">Trước khi viết những dòng code đầu tiên, việc hiểu rõ kiến trúc của một ứng dụng web và cách môi trường hoạt động là cực kỳ quan trọng. Chương này sẽ đặt nền móng vững chắc cho toàn bộ khóa học.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>1.1. Kiến trúc ứng dụng Web</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <p class="mb-4">Mọi ứng dụng web đều hoạt động dựa trên mô hình Client-Server. Kiến trúc này bao gồm hai thành phần chính chạy song song:</p>
+                                    <ul class="list-disc list-inside mb-4 pl-4 space-y-2">
+                                        <li><strong>Phía Máy khách (Frontend):</strong> Là phần mã nguồn chạy trên trình duyệt của người dùng (Web Client). Nó được viết bằng HTML, CSS, và JavaScript, chịu trách nhiệm cho giao diện người dùng (UI) và tương tác trực tiếp với người dùng.</li>
+                                        <li><strong>Phía Máy chủ (Backend):</strong> Là phần mã nguồn chạy trên máy chủ (Web Server). Nó được viết bằng các ngôn ngữ như PHP, Python, Java... và chịu trách nhiệm xử lý logic nghiệp vụ, tương tác với cơ sở dữ liệu, và phản hồi lại các yêu cầu (HTTP Request) từ phía client.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>1.2. Luồng xử lý Web tĩnh vs. Web động</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <h4 class="text-xl font-semibold text-slate-200 mb-2">Trang Web Tĩnh</h4>
+                                    <p class="mb-4 text-slate-400">Nội dung không thay đổi, được xây dựng sẵn bằng HTML, CSS. Server chỉ đơn giản là tìm và gửi file HTML về cho trình duyệt.</p>
+                                    <div class="p-4 bg-slate-900 rounded-lg flex items-center justify-center gap-4 text-center text-sm mb-6">
+                                        <div class="diagram-item p-2 border border-slate-600 rounded">Client</div>
+                                        <span class="text-cyan-400">→ HTTP Request →</span>
+                                        <div class="diagram-item p-2 border border-slate-600 rounded">Server</div>
+                                        <span class="text-cyan-400">→ Gửi file HTML →</span>
+                                        <div class="diagram-item p-2 border border-slate-600 rounded">Client</div>
+                                    </div>
+
+                                    <h4 class="text-xl font-semibold text-slate-200 mb-2">Trang Web Động</h4>
+                                    <p class="mb-4 text-slate-400">Nội dung được tạo ra một cách linh hoạt bởi một chương trình phía server (ví dụ: script PHP). Server sẽ thực thi mã PHP, có thể truy vấn cơ sở dữ liệu, sau đó tạo ra một trang HTML và gửi về cho trình duyệt.</p>
+                                    <div class="p-4 bg-slate-900 rounded-lg flex flex-col items-center justify-center gap-2 text-center text-sm">
+                                        <div class="flex items-center gap-4">
+                                            <div class="diagram-item p-2 border border-slate-600 rounded">Client</div>
+                                            <span class="text-cyan-400">→ HTTP Request →</span>
+                                            <div class="diagram-item p-2 border border-slate-600 rounded">Server</div>
+                                            <span class="text-cyan-400">→ Chuyển cho PHP Interpreter</span>
+                                        </div>
+                                        <div class="w-px h-4 bg-slate-600"></div>
+                                        <div class="flex items-center gap-4">
+                                            <div class="diagram-item p-2 border border-slate-600 rounded">Database</div>
+                                            <span class="text-cyan-400">↔ Truy vấn ↔</span>
+                                            <div class="diagram-item p-2 border border-slate-600 rounded">PHP Interpreter</div>
+                                            <span class="text-cyan-400">→ Tạo HTML & Gửi lại Server</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="lesson-2" class="content-section hidden">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-2">Chương 2-4: Thao tác CSDL cơ bản</h2>
+                        <p class="text-slate-400 mb-6">Module này tập trung vào các bước nền tảng để làm việc với cơ sở dữ liệu: kết nối, tạo cơ sở dữ liệu và định nghĩa cấu trúc bảng bằng code PHP.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>2.1. Kết nối PHP với MySQL (MySQLi vs PDO)</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <p class="mb-4">PHP cung cấp hai phương thức chính để kết nối đến MySQL. PDO được khuyến khích sử dụng vì tính linh hoạt (hỗ trợ nhiều CSDL) và an toàn hơn với Prepared Statements.</p>
+                                    <div class="tabs-container">
+                                        <div class="mb-4 border-b border-slate-700">
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l2-mysqli-tab">MySQLi</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l2-pdo-tab">PDO</button>
+                                        </div>
+                                        <div id="l2-mysqli-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">MySQLi (Object-Oriented)</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto" id="code-mysqli-connect">
+                                                <button class="copy-btn">Copy</button>
+                                                <pre class="p-4"><code>$conn = new mysqli('localhost', 'root', '', 'mydatabase');
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}</code></pre>
+                                            </div>
+                                        </div>
+                                        <div id="l2-pdo-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">PDO (PHP Data Objects)</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto" id="code-pdo-connect">
+                                                <button class="copy-btn">Copy</button>
+                                                <pre class="p-4"><code>try {
+  $dsn = "mysql:host=localhost;dbname=mydatabase;charset=utf8mb4";
+  $conn = new PDO($dsn, 'root', '');
+  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  die("Connection failed: " . $e->getMessage());
+}</code></pre>
+                                            </div>
+                                            <div class="mt-4">
+                                                <button class="ai-explain-btn text-sm bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2 px-4 rounded-lg transition flex items-center gap-2" data-code-id="code-pdo-connect">
+                                                    ✨ Giải thích Code
+                                                </button>
+                                                <div class="ai-explanation-container mt-4"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>2.2. Các chế độ Fetch của PDO</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <p class="mb-4">Khi lấy dữ liệu, PDO cho phép bạn chọn định dạng của kết quả trả về:</p>
+                                    <ul class="list-disc list-inside mb-4 pl-4 space-y-2">
+                                        <li><code>PDO::FETCH_ASSOC</code>: Trả về một mảng kết hợp (associative array) với key là tên cột. Đây là chế độ phổ biến nhất. Ví dụ: <code>$row['name']</code>.</li>
+                                        <li><code>PDO::FETCH_OBJ</code>: Trả về một đối tượng ẩn danh (anonymous object) với tên thuộc tính là tên cột. Ví dụ: <code>$row->name</code>.</li>
+                                        <li><code>PDO::FETCH_CLASS</code>: Gán dữ liệu vào các thuộc tính của một đối tượng thuộc một lớp (class) cụ thể mà bạn chỉ định.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="lesson-3" class="content-section hidden">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-2">Chương 5-8: Thao tác dữ liệu (CRUD)</h2>
+                        <p class="text-slate-400 mb-6">CRUD (Create, Read, Update, Delete) là bốn hoạt động cốt lõi trong quản lý dữ liệu. Module này sẽ hướng dẫn chi tiết cách thực hiện từng thao tác bằng PHP và PDO, đặc biệt nhấn mạnh về bảo mật.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>3.1. Prepared Statements và Chống SQL Injection</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <p class="mb-4"><strong>SQL Injection</strong> là một kỹ thuật tấn công phổ biến, trong đó kẻ tấn công chèn mã SQL độc hại vào các câu lệnh truy vấn. Để ngăn chặn, chúng ta phải luôn sử dụng <strong>Prepared Statements</strong>. Kỹ thuật này tách biệt câu lệnh SQL khỏi dữ liệu người dùng, khiến cho dữ liệu đầu vào không thể bị thực thi như một phần của câu lệnh.</p>
+                                    <p>Tất cả các ví dụ CRUD dưới đây đều sử dụng Prepared Statements với PDO.</p>
+                                </div>
+                            </div>
+
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>3.2. Ví dụ CRUD hoàn chỉnh: Quản lý Loại sản phẩm</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <p class="mb-4">Dưới đây là ví dụ về một ứng dụng nhỏ quản lý loại sản phẩm, bao gồm các chức năng Thêm, Sửa, Xóa và Hiển thị danh sách.</p>
+                                    <div class="tabs-container">
+                                        <div class="mb-4 border-b border-slate-700">
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l3-read-tab">1. Hiển thị (Read)</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l3-create-tab">2. Thêm mới (Create)</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l3-update-tab">3. Cập nhật (Update)</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l3-delete-tab">4. Xóa (Delete)</button>
+                                        </div>
+                                        <div id="l3-read-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">categories.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto" id="code-crud-read">
+                                                <button class="copy-btn">Copy</button>
+                                                <pre class="p-4"><code>&lt;?php
+// include 'db_connection.php';
+// $stmt = $conn->query("SELECT * FROM categories");
+// $categories = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?&gt;
+&lt;!-- HTML để hiển thị bảng categories --&gt;
+&lt;a href="category_add.php"&gt;Thêm loại sản phẩm mới&lt;/a&gt;
+&lt;table&gt;
+    &lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Tên&lt;/th&gt;&lt;th&gt;Hành động&lt;/th&gt;&lt;/tr&gt;
+    &lt;?php // foreach ($categories as $cat): ?&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;?php // echo $cat['id']; ?&gt;&lt;/td&gt;
+        &lt;td&gt;&lt;?php // echo htmlspecialchars($cat['name']); ?&gt;&lt;/td&gt;
+        &lt;td&gt;
+            &lt;a href="category_edit.php?id=&lt;?php // echo $cat['id']; ?&gt;"&gt;Sửa&lt;/a&gt;
+            &lt;a href="category_delete.php?id=&lt;?php // echo $cat['id']; ?&gt;" onclick="return confirm('Bạn chắc chắn muốn xóa?');"&gt;Xóa&lt;/a&gt;
+        &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;?php // endforeach; ?&gt;
+&lt;/table&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                        <div id="l3-create-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">category_add.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto" id="code-crud-create">
+                                                <button class="copy-btn">Copy</button>
+                                                <pre class="p-4"><code>&lt;?php
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // include 'db_connection.php';
+    $name = $_POST['name'];
+    $sql = "INSERT INTO categories (name) VALUES (?)";
+    $stmt = $conn->prepare($sql);
+    if ($stmt->execute([$name])) {
+        header("Location: categories.php");
+        exit;
+    }
+}
+?&gt;
+&lt;form method="POST"&gt;
+    Tên loại sản phẩm: &lt;input type="text" name="name" required&gt;
+    &lt;button type="submit"&gt;Lưu&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                        <div id="l3-update-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">category_edit.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto" id="code-crud-update">
+                                                <button class="copy-btn">Copy</button>
+                                                <pre class="p-4"><code>&lt;?php
+// include 'db_connection.php';
+$id = $_GET['id'];
+// Logic để lấy thông tin category hiện tại từ CSDL với id=$id
+// ... $category = $stmt->fetch();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $sql = "UPDATE categories SET name = ? WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    if ($stmt->execute([$name, $id])) {
+        header("Location: categories.php");
+        exit;
+    }
+}
+?&gt;
+&lt;form method="POST"&gt;
+    Tên loại sản phẩm: &lt;input type="text" name="name" value="&lt;?php // echo htmlspecialchars($category['name']); ?&gt;" required&gt;
+    &lt;button type="submit"&gt;Cập nhật&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                        <div id="l3-delete-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">category_delete.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto" id="code-crud-delete">
+                                                <button class="copy-btn">Copy</button>
+                                                <pre class="p-4"><code>&lt;?php
+// include 'db_connection.php';
+$id = $_GET['id'];
+$sql = "DELETE FROM categories WHERE id = ?";
+$stmt = $conn->prepare($sql);
+if ($stmt->execute([$id])) {
+    header("Location: categories.php");
+    exit;
+}
+?&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="lesson-4" class="content-section hidden">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-2">Chương 9: Mô hình MVC</h2>
+                        <p class="text-slate-400 mb-6">MVC là một mẫu kiến trúc phần mềm giúp tách biệt logic xử lý, dữ liệu và giao diện người dùng, giúp code có tổ chức, dễ bảo trì và mở rộng.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>4.1. Ví dụ MVC hoàn chỉnh: Quản lý Sinh viên</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <p class="mb-4">Dưới đây là mã nguồn cho một ứng dụng MVC đơn giản để quản lý sinh viên, thể hiện rõ vai trò của từng thành phần.</p>
+                                    <div class="tabs-container">
+                                        <div class="mb-4 border-b border-slate-700 flex flex-wrap">
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l4-index-tab">index.php</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l4-controller-tab">Controller</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l4-model-tab">Model</button>
+                                            <button class="tab-button p-3 text-sm font-medium" data-target="l4-view-tab">View</button>
+                                        </div>
+                                        <div id="l4-index-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">index.php (Front Controller)</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto"><button class="copy-btn">Copy</button><pre class="p-4"><code>&lt;?php
+require_once 'controllers/StudentController.php';
+$controller = new StudentController();
+$controller->handleRequest();
+?&gt;</code></pre></div>
+                                        </div>
+                                        <div id="l4-controller-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">controllers/StudentController.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto"><button class="copy-btn">Copy</button><pre class="p-4"><code>&lt;?php
+require_once 'models/StudentModel.php';
+class StudentController {
+    private $model;
+    public function __construct() {
+        $this->model = new StudentModel();
+    }
+    public function handleRequest() {
+        $action = isset($_GET['action']) ? $_GET['action'] : 'list';
+        switch ($action) {
+            case 'list':
+                $students = $this->model->getAllStudents();
+                include 'views/student_list.php';
+                break;
+            case 'detail':
+                $student = $this->model->getStudentById($_GET['id']);
+                include 'views/student_detail.php';
+                break;
+            default:
+                // Handle error
+                break;
+        }
+    }
+}
+?&gt;</code></pre></div>
+                                        </div>
+                                        <div id="l4-model-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">models/StudentModel.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto"><button class="copy-btn">Copy</button><pre class="p-4"><code>&lt;?php
+// require_once 'db_connection.php';
+class StudentModel {
+    private $db;
+    public function __construct() { /* $this->db = ... connect to db ... */ }
+    public function getAllStudents() { /* ... query to get all students ... */ }
+    public function getStudentById($id) { /* ... query to get one student ... */ }
+}
+?&gt;</code></pre></div>
+                                        </div>
+                                        <div id="l4-view-tab" class="tab-content">
+                                            <h5 class="font-semibold mb-2 text-slate-300">views/student_list.php</h5>
+                                            <div class="code-block rounded-lg text-sm overflow-x-auto"><button class="copy-btn">Copy</button><pre class="p-4"><code>&lt;h1&gt;Danh sách sinh viên&lt;/h1&gt;
+&lt;ul&gt;
+&lt;?php foreach ($students as $student): ?&gt;
+    &lt;li&gt;
+        &lt;a href="index.php?action=detail&id=&lt;?php echo $student['id']; ?&gt;"&gt;
+            &lt;?php echo htmlspecialchars($student['name']); ?&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;?php endforeach; ?&gt;
+&lt;/ul&gt;</code></pre></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="lesson-5" class="content-section hidden">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-2">Dự án: Xây dựng giỏ hàng</h2>
+                        <p class="text-slate-400 mb-6">Đây là lúc áp dụng tất cả kiến thức đã học để xây dựng một chức năng thực tế: giỏ hàng cho một trang thương mại điện tử. Chúng ta sẽ sử dụng `Session` để quản lý trạng thái giỏ hàng của người dùng.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="accordion-item border border-slate-700 rounded-lg">
+                                <button class="accordion-header w-full text-left p-4 font-semibold text-slate-200 bg-slate-700/50 hover:bg-slate-700 transition rounded-t-lg flex justify-between items-center">
+                                    <span>5.1. Luồng hoạt động và Code mẫu</span>
+                                    <span class="text-cyan-400 transform transition-transform duration-300">&#9662;</span>
+                                </button>
+                                <div class="accordion-content bg-slate-800 p-4 border-t border-slate-700 rounded-b-lg">
+                                    <h5 class="font-semibold mb-2 text-slate-300">products.php (Hiển thị sản phẩm)</h5>
+                                    <div class="code-block rounded-lg text-sm overflow-x-auto mb-4"><button class="copy-btn">Copy</button><pre class="p-4"><code>&lt;!-- Lặp qua danh sách sản phẩm từ CSDL --&gt;
+&lt;div class="product"&gt;
+    &lt;h3&gt;Tên sản phẩm&lt;/h3&gt;
+    &lt;p&gt;Giá: 100.000đ&lt;/p&gt;
+    &lt;form action="cart.php" method="post"&gt;
+        &lt;input type="hidden" name="action" value="add"&gt;
+        &lt;input type="hidden" name="product_id" value="1"&gt;
+        &lt;input type="number" name="quantity" value="1" min="1"&gt;
+        &lt;button type="submit"&gt;Thêm vào giỏ&lt;/button&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre></div>
+                                    <h5 class="font-semibold mb-2 text-slate-300">cart.php (Xử lý logic giỏ hàng)</h5>
+                                    <div class="code-block rounded-lg text-sm overflow-x-auto mb-4" id="code-cart-logic"><button class="copy-btn">Copy</button><pre class="p-4"><code>&lt;?php
+session_start();
+
+$action = $_POST['action'] ?? '';
+$product_id = $_POST['product_id'] ?? 0;
+$quantity = $_POST['quantity'] ?? 1;
+
+if ($action === 'add' && $product_id > 0 && $quantity > 0) {
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+    if (isset($_SESSION['cart'][$product_id])) {
+        $_SESSION['cart'][$product_id] += $quantity;
+    } else {
+        $_SESSION['cart'][$product_id] = $quantity;
+    }
+}
+
+// Thêm logic cho 'update', 'delete'
+
+header('Location: view_cart.php');
+exit();
+?&gt;</code></pre></div>
+                                    <div class="mt-4">
+                                        <button class="ai-explain-btn text-sm bg-cyan-600 hover:bg-cyan-500 text-white font-semibold py-2 px-4 rounded-lg transition flex items-center gap-2" data-code-id="code-cart-logic">
+                                            ✨ Giải thích Code
+                                        </button>
+                                        <div class="ai-explanation-container mt-4"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="ai-assistant" class="content-section hidden">
+                    <div class="bg-slate-800 p-8 rounded-xl shadow-lg">
+                        <h2 class="text-3xl font-bold text-cyan-400 mb-2">✨ Trợ lý AI</h2>
+                        <p class="text-slate-400 mb-6">Có câu hỏi nào về PHP, MySQL, MVC hay bất cứ khái niệm nào trong khóa học? Hãy hỏi trợ lý AI của chúng tôi!</p>
+                        
+                        <div id="ai-chat-container" class="h-[50vh] bg-slate-900 rounded-lg p-4 overflow-y-auto flex flex-col gap-4">
+                            <div class="ai-chat-bubble p-4 rounded-lg self-start max-w-lg">
+                                <p>Xin chào! Tôi có thể giúp gì cho bạn trong việc học lập trình web hôm nay?</p>
+                            </div>
+                        </div>
+
+                        <form id="ai-chat-form" class="mt-4 flex gap-4">
+                            <input type="text" id="ai-chat-input" placeholder="Ví dụ: Sự khác biệt giữa MySQLi và PDO là gì?" class="flex-grow bg-slate-700 border border-slate-600 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-cyan-500 text-slate-200">
+                            <button type="submit" class="bg-cyan-600 hover:bg-cyan-500 text-white font-bold py-3 px-6 rounded-lg transition">Gửi</button>
+                        </form>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+    <div id="sidebar-overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden md:hidden"></div>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
